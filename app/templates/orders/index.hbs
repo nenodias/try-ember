@@ -1,0 +1,14 @@
+<form {{action "createOrder" model on="submit" }}>
+    <label for="name">Name:</label>
+    {{input type="text" id="name" value=model.name }}
+
+    {{#each model.items as |item|}}
+        <label>
+            {{item.product.title}}
+            {{input type="number" min="0" value=item.quantity }}
+            <button {{action "addItemQuantity" item 10}}>+10</button>
+        </label>
+    {{/each}}
+
+    <input type="submit" value="Order" />
+</form>

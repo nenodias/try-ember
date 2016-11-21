@@ -1,0 +1,32 @@
+<h3>Hi I am form order.hbs</h3>
+Order:{{model.id}}
+Name:{{model.name}}<br />
+
+<table>
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Cost</th>
+            <th>Percent</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each model.items as |item|}}
+        <tr>
+            <td>{{ item.title }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.unitPrice }}</td>
+            <td>${{ item.price }}</td>
+            <td>{{ item-percentage itemPrice=item.price orderPrice=model.price }}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+    <tbody>
+        <tr>
+            <th colspan="2">Total</th>
+            <td colspan="3">${{model.price}}</td>
+        </tr>
+    </tbody>
+</table>
